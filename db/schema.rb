@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_150801) do
+ActiveRecord::Schema.define(version: 2021_02_22_113040) do
 
   create_table "keywords", force: :cascade do |t|
     t.string "word"
@@ -18,19 +18,6 @@ ActiveRecord::Schema.define(version: 2021_02_22_150801) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_keywords_on_user_id"
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.integer "recipient_id", null: false
-    t.integer "poster_id", null: false
-    t.integer "post_id", null: false
-    t.string "matched_keyword"
-    t.boolean "read"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_notifications_on_post_id"
-    t.index ["poster_id"], name: "index_notifications_on_poster_id"
-    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -58,8 +45,5 @@ ActiveRecord::Schema.define(version: 2021_02_22_150801) do
   end
 
   add_foreign_key "keywords", "users"
-  add_foreign_key "notifications", "posters"
-  add_foreign_key "notifications", "posts"
-  add_foreign_key "notifications", "recipients"
   add_foreign_key "posts", "users"
 end
