@@ -3,7 +3,7 @@ class KeywordsController < ApplicationController
 
   # GET /keywords or /keywords.json
   def index
-    @keywords = Keyword.all.order("created_at DESC")
+    @keywords = current_user.keywords.all.order("created_at DESC")
   end
 
   # GET /keywords/1 or /keywords/1.json
