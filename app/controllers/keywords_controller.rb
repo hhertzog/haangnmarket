@@ -1,5 +1,6 @@
 class KeywordsController < ApplicationController
   before_action :set_keyword, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /keywords or /keywords.json
   def index

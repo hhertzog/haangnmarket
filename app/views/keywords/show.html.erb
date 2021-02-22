@@ -1,4 +1,6 @@
-<p>
-  <strong>Word:</strong>
-  <%= @keyword.word %>
-</p>
+<% if user_signed_in? && (@keyword.user_id == current_user.id) %>
+	<p>
+	  <strong>Word:</strong>
+	  <%= @keyword.word %>
+	</p>
+<% end %>
