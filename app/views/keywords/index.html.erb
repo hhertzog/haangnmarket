@@ -1,24 +1,19 @@
-<h4>My Keywords</h4>
+<h2>My Keywords</h2>
 
-<%= link_to 'Add a New Keyword', new_keyword_path %>
+<%= link_to 'Add a New Keyword', new_keyword_path, class:"btn btn-outline-success" %>
 <br/><br/>
 
-<table>
-  <thead>
-    <tr>
-      <th>Word</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<table class="table table-hover table-light">
 
   <tbody>
     <% @keywords.each do |keyword| %>
       <tr>
-        <td><%= keyword.word %></td>
-        <td><%= link_to 'Delete', keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><h5><%= keyword.word %></h5></td>
+        <td><%= link_to 'Delete', keyword, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>
+
 </table>
 
 <br>
