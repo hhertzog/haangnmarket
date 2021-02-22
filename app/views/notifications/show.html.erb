@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Recipient:</strong>
+  <%= @notification.recipient_id %>
+</p>
+
+<p>
+  <strong>Poster:</strong>
+  <%= @notification.poster_id %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @notification.post_id %>
+</p>
+
+<p>
+  <strong>Matched keyword:</strong>
+  <%= @notification.matched_keyword %>
+</p>
+
+<p>
+  <strong>Read:</strong>
+  <%= @notification.read %>
+</p>
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>
