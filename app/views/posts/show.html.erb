@@ -1,29 +1,32 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="card text-center">
+  <div class="card-header">
+    <strong><h3><%= @post.title %></h3></strong>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">
+      <% if @post.category != nil %>
+        <%= @post.category %>  -  
+      <% end %>
+      <%= @post.neighborhood %>
+    </h4>
+    <br/>
+    <h5 class="card-text"><%= @post.body %><br/><br/></h5>
+  </div>
 
-<p>
-  <strong>Neighborhood:</strong>
-  <%= @post.neighborhood %>
-</p>
+  <% if user_signed_in? && (@post.user_id == current_user.id) %>
+    <div class="d-grid gap-1 col-1 mx-auto">
+      <%= link_to 'Edit', edit_post_path(@post), class:"btn btn-outline-success" %>
+      <br/>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Category:</strong>
-  <%= @post.category %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @post.price %>원
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
-
-<% if user_signed_in? && (@post.user_id == current_user.id) %>
-  <%= link_to 'Edit', edit_post_path(@post) %>
-  <br/><br/>
-<% end %>
+  <div class="card-footer text-muted">
+    <strong><h5>
+      <% if @post.price != nil %>
+        <%= @post.price %>원
+      <% else %>
+        No price listed
+      <% end %>
+    </h5></strong>
+  </div>
+</div>
