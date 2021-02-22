@@ -1,13 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h4>My Keywords</h4>
 
-<h1>Keywords</h1>
+<%= link_to 'New Keyword', new_keyword_path %>
+<br/><br/>
 
 <table>
   <thead>
     <tr>
       <th>Word</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -15,9 +15,6 @@
     <% @keywords.each do |keyword| %>
       <tr>
         <td><%= keyword.word %></td>
-        <td><%= keyword.user_id %></td>
-        <td><%= link_to 'Show', keyword %></td>
-        <td><%= link_to 'Edit', edit_keyword_path(keyword) %></td>
         <td><%= link_to 'Destroy', keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -25,5 +22,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Keyword', new_keyword_path %>
