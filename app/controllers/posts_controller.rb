@@ -29,7 +29,11 @@ class PostsController < ApplicationController
           
         #notify all users a post was made
         User.all.each do |user|
-          create_notification user, "test", @post
+          user.keywords.all.each do |keyword|
+            if (@post.title.include? keyword.word) || (@post.body.include? keyword.word)
+              create_notification user, keyword.word, @post
+            end
+          end
         end
 
         format.html { redirect_to @post, notice: "Post was successfully created." }

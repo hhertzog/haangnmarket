@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'notifications/index'
+  delete 'notifications/index', to:'notifications#delete_all'
   resources :posts
   resources :keywords
   devise_for :users
