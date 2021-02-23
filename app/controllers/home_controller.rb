@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   end
 
   def my_posts
-  	@posts = current_user.posts  	
+  	@posts = current_user.posts.order("created_at DESC")
   end
 
   def delete_all_user_posts

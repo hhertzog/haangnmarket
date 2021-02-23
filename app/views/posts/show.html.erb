@@ -2,15 +2,16 @@
   <div class="card-header">
     <strong><h3><%= @post.title %></h3></strong>
   </div>
+  
   <div class="card-body">
     <h4 class="card-title">
-      <% if @post.category != nil %>
+      <% if @post.category != nil && @post.category != "" %>
         <%= @post.category %>  -  
       <% end %>
       <%= @post.neighborhood %>
     </h4>
     <br/>
-    <h5 class="card-text"><%= @post.body %><br/><br/></h5>
+    <h5 class="card-text"><%= @post.body %><br/></h5>
   </div>
 
   <% if user_signed_in? && (@post.user_id == current_user.id) %>
@@ -20,13 +21,9 @@
     </div>
   <% end %>
 
-  <div class="card-footer text-muted">
-    <strong><h5>
-      <% if @post.price != nil %>
-        <%= @post.price %>원
-      <% else %>
-        No price listed
-      <% end %>
-    </h5></strong>
-  </div>
+  <% if @post.price != nil %>
+    <div class="card-footer text-muted">
+      <strong><h5><%= @post.price %>원</h5></strong>
+    </div>
+  <% end %>
 </div>
