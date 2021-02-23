@@ -1,2 +1,38 @@
-<h1>Notifications#index</h1>
-<p>Find me in app/views/notifications/index.html.erb</p>
+<h2>Keyword Alerts</h2>
+<table class="table table-hover table-light">
+  <thead>
+    <tr>
+      <th></th>
+      <th><strong>Title</strong></th>
+      <th>Neighborhood</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Details</th>
+      <th>Keyword</th>
+      <th>Read</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notifications.each do |notification| %>
+      <tr>
+
+	      <td><%= link_to 'View', notification.post, class:"btn btn-outline-primary" %></td>
+	      <td><strong><%= notification.post.title %></strong></td>
+	      <td><%= notification.post.neighborhood %></td>
+	      <td><%= notification.post.category %></td>
+	      <td>
+	        <% if notification.post.price != nil %>
+	          <%= "#{notification.post.price}원" %>
+	        <% end %>
+	      </td>
+	      <td><%= notification.post.body %></td>
+	      <td><%= notification.keyword %></td>
+	      <td><%= notification.read %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

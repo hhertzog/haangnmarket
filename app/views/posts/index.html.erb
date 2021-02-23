@@ -28,9 +28,8 @@
           <td><%= post.neighborhood %></td>
           <td><%= post.category %></td>
           <td>
-            <%= post.price %>
             <% if post.price != nil %>
-              원
+              <%= "#{post.price}원" %>
             <% end %>
           </td>
           <td><%= post.body %></td>
