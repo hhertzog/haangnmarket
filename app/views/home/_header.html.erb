@@ -19,6 +19,9 @@
             <%= link_to 'My Keywords', keywords_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
+            <%= link_to "#{current_user.notifications.where(read: false).count} New Keyword Alerts", notifications_index_path, class:"nav-link" %>
+          </li>          
+          <li class="nav-item">
             <%= link_to 'Manage Profile', edit_user_registration_path, class:"nav-link" %>
           </li>
           <li class="nav-item">

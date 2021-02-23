@@ -75,10 +75,11 @@ class PostsController < ApplicationController
     end
 
     def create_notification(recipient, matched_keyword, post)
-      #return if current_user.id == recipient.id
+      # return if current_user.id == recipient.id
       Notification.create(recipient_id: recipient.id, 
                           poster_id: current_user.id, 
                           keyword: matched_keyword,
-                          post: post)      
+                          post: post,
+                          read: false)
     end
 end
