@@ -1,6 +1,7 @@
 <h2>My Keywords</h2>
 
 <%= link_to 'Add a New Keyword', new_keyword_path, class:"btn btn-outline-success" %>
+<%= link_to "Delete all my keywords", keywords_index_path, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %>
 <br/><br/>
 
 <table class="table table-hover table-light">

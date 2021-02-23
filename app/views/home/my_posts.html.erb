@@ -1,6 +1,7 @@
 <h2>My Posts</h2>
 
 <%= link_to 'Write a New Post', new_post_path, class:"btn btn-outline-success" %>
+<%= link_to "Delete all my posts", home_index_path, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %>
 <br/><br/>
 
 <table class="table table-hover table-light">

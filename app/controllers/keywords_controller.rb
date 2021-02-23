@@ -57,6 +57,15 @@ class KeywordsController < ApplicationController
     end
   end
 
+  def delete_all_user_keywords
+    @keywords = current_user.keywords
+    @keywords.destroy_all
+    respond_to do |format|
+      format.html { redirect_to keywords_url, notice: "Deleted all keywords successfully." }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_keyword
