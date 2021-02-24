@@ -14,7 +14,7 @@ class NotificationsController < ApplicationController
    	@notifications = current_user.notifications
    	@notifications.destroy_all
    	respond_to do |format|
-      format.html { redirect_to notifications_index_path, notice: "Cleared all notifications successfully." }
+      format.html { redirect_to notifications_index_path, notice: "성공적으로 삭제되었습니다." }
       format.json { head :no_content }
     end
   end

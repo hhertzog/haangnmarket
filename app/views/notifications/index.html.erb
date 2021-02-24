@@ -1,6 +1,6 @@
-<h2>Keyword Alerts</h2>
+<h2>키워드 알림</h2>
 
-<%= link_to "Clear all notifications", notifications_index_path, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %>
+<%= link_to "전체 삭제", notifications_index_path, method: :delete, data: { confirm: '정말로 키워드 알림 전체 삭제하고 싶으세요?' }, class:"btn btn-outline-danger" %>
 <br/><br/>
 
 
@@ -8,12 +8,12 @@
   <thead>
     <tr>
       <th></th>
-      <th><strong>Title</strong></th>
-      <th>Neighborhood</th>
-      <th>Category</th>
-      <th>Price</th>
-      <th>Details</th>
-      <th>Keyword</th>
+      <th><strong>제목</strong></th>
+      <th>동네</th>
+      <th>카테고리</th>
+      <th>가격</th>
+      <th></th>
+      <th>키워드</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,7 +22,7 @@
     <% @notifications.each do |notification| %>
       <tr>
         
-	      <td><%= link_to 'View', notification.post, class:"btn btn-outline-primary" %></td>
+	      <td><%= link_to '보기', notification.post, class:"btn btn-outline-primary" %></td>
 	      <td><strong><%= notification.post.title %></strong></td>
 	      <td><%= notification.post.neighborhood %></td>
 	      <td><%= notification.post.category %></td>

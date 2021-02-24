@@ -1,7 +1,7 @@
 <h2>나의 판매내역</h2>
 
 <%= link_to '새 게시글', new_post_path, class:"btn btn-outline-success" %>
-<%= link_to '전체 삭제', home_index_path, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %>
+<%= link_to '전체 삭제', home_index_path, method: :delete, data: { confirm: '정말로 판매내역을 전체 삭제하고 싶으세요?' }, class:"btn btn-outline-danger" %>
 <br/><br/>
 
 <table class="table table-hover table-light">

@@ -12,7 +12,7 @@ class HomeController < ApplicationController
    	@posts = current_user.posts
    	@posts.destroy_all
    	respond_to do |format|
-      format.html { redirect_to home_my_posts_path, notice: "Deleted all posts successfully." }
+      format.html { redirect_to home_my_posts_path, notice: "성공적으로 삭제되었습니다." }
       format.json { head :no_content }
     end
   end

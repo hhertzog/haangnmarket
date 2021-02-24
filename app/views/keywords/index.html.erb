@@ -1,7 +1,7 @@
-<h2>My Keywords</h2>
+<h2>키워드 알림 설정</h2>
 
-<%= link_to 'Add a New Keyword', new_keyword_path, class:"btn btn-outline-success" %>
-<%= link_to "Delete all my keywords", keywords_index_path, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %>
+<%= link_to '새 키워드 등록', new_keyword_path, class:"btn btn-outline-success" %>
+<%= link_to '키워드 전체 삭제', keywords_index_path, method: :delete, data: { confirm: '정말로 모든 키워드를 삭제하고 싶으세요?' }, class:"btn btn-outline-danger" %>
 <br/><br/>
 
 <table class="table table-hover table-light">
@@ -10,7 +10,7 @@
     <% @keywords.each do |keyword| %>
       <tr>
         <td><h5><%= keyword.word %></h5></td>
-        <td><%= link_to 'Delete', keyword, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %></td>
+        <td><%= link_to '삭제', keyword, method: :delete, data: { confirm: '정말로 이 키워드를 삭제하고 싶으세요?' }, class:"btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>

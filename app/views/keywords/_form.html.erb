@@ -1,7 +1,7 @@
 <%= form_with(model: keyword) do |form| %>
   <% if keyword.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(keyword.errors.count, "error") %> prohibited this keyword from being saved:</h2>
+      <h2><%= pluralize(keyword.errors.count, "error") %> 에러 때문에 키워드 저장 실패했습니다:</h2>
 
       <ul>
         <% keyword.errors.each do |error| %>
@@ -13,7 +13,7 @@
 
   <div class="row">
     <div class="form-group col-lg-2">
-      <%= form.text_field :word, class:"form-control", placeholder:"Keyword" %>
+      <%= form.text_field :word, class:"form-control", placeholder:"키워드를 입력해주세요." %>
     </div>
   </div>
 
@@ -23,6 +23,6 @@
   <br/>
 
   <div class="actions">
-    <%= form.submit class:"btn btn-outline-success" %>
+    <%= form.submit class:"btn btn-outline-success", value:"등록" %>
   </div>
 <% end %>

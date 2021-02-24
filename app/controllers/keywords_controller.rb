@@ -26,7 +26,7 @@ class KeywordsController < ApplicationController
 
     respond_to do |format|
       if @keyword.save
-        format.html { redirect_to keywords_url, notice: "Keyword was successfully created." }
+        format.html { redirect_to keywords_url, notice: "키워드 등록되었습니다." }
         format.json { render :show, status: :created, location: @keyword }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class KeywordsController < ApplicationController
   def destroy
     @keyword.destroy
     respond_to do |format|
-      format.html { redirect_to keywords_url, notice: "Keyword was successfully destroyed." }
+      format.html { redirect_to keywords_url, notice: "성공적으로 삭제되었습니다." }
       format.json { head :no_content }
     end
   end
@@ -61,7 +61,7 @@ class KeywordsController < ApplicationController
     @keywords = current_user.keywords
     @keywords.destroy_all
     respond_to do |format|
-      format.html { redirect_to keywords_url, notice: "Deleted all keywords successfully." }
+      format.html { redirect_to keywords_url, notice: "성공적으로 삭제되었습니다." }
       format.json { head :no_content }
     end
   end
