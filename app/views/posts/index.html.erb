@@ -36,7 +36,7 @@
         <td><%= post.body %></td>
 
         <!-- allow user to edit/delete posts that they own on "All Posts" page-->
-        <% if !user_signed_in? || (post.user_id == current_user.id) %>
+        <% if user_signed_in? && (post.user_id == current_user.id) %>
           <td><%= link_to '수정', edit_post_path(post), class:"btn btn-outline-success" %></td>
           <td><%= link_to '삭제', post, method: :delete, data: { confirm: '정말로 이 게시글을 삭제하고 싶으세요?' }, class:"btn btn-outline-danger" %></td>
         <% else %>
