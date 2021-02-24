@@ -5,13 +5,15 @@
   
   <div class="card-body">
     <h4 class="card-title">
-      <% if @post.category != nil && @post.category != "" %>
+      <% if @post.category != "" %>
         <%= @post.category %>  -  
       <% end %>
       <%= @post.neighborhood %>
     </h4>
-    <br/>
-    <h5 class="card-text"><%= @post.body %><br/></h5>
+
+    <% if @post.body != "" %>
+      <h5 class="card-text"><br/><%= @post.body %><br/></h5>
+    <% end %>
   </div>
 
   <% if user_signed_in? && (@post.user_id == current_user.id) %>
