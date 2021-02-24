@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
           
-        #notify all users a post was made
+        #notify users with registered keyword included in post title or body
         User.all.each do |user|
           user.keywords.all.each do |keyword|
             if (@post.title.include? keyword.word) || (@post.body.include? keyword.word)
