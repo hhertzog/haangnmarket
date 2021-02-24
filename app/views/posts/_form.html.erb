@@ -1,7 +1,7 @@
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(post.errors.count, "error") %> 에러 때문에 게시글 올리기 실패했습니다:</h2>
 
       <ul>
         <% post.errors.each do |error| %>
@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field mb-3">
-    <%= form.text_field :title, class:"form-control", placeholder:"Title (required)" %>
+    <%= form.text_field :title, class:"form-control", placeholder:"글 제목 (필수사항)" %>
   </div>
 
   <div class="field mb-3">
-    <%= form.text_field :neighborhood, class:"form-control", placeholder:"Neighborhood (required)" %>
+    <%= form.text_field :neighborhood, class:"form-control", placeholder:"동네 (필수사항)" %>
   </div>
 
   <div class="field mb-3">
-    <%= form.text_field :category, class:"form-control", placeholder:"Category (optional)" %>
+    <%= form.text_field :category, class:"form-control", placeholder:"카테고리 (선택사항)" %>
   </div>
 
   <div class="field mb-3">
-    <%= form.number_field :price, class:"form-control", placeholder:"Price (optional)" %>
+    <%= form.number_field :price, class:"form-control", placeholder:"₩ 가격 (선택사항)" %>
   </div>
 
   <div class="field mb-3">
-    <%= form.text_area :body, class:"form-control", placeholder:"Write details about your item here! (optional)", rows: 5 %>
+    <%= form.text_area :body, class:"form-control", placeholder:"이 동네에 올릴 게시글 내용을 작성해주세요! (선택사항)", rows: 5 %>
   </div>
 
   <div class="field mb-3">

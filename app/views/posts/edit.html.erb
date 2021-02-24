@@ -1,5 +1,5 @@
 <% if user_signed_in? && (@post.user_id == current_user.id) %>
-	<h4>Editing Post</h4>
+	<h4>게시글 수정하기</h4>
 
 	<%= render 'form', post: @post %>
 

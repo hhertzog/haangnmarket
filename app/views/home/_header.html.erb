@@ -7,34 +7,34 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <%= link_to 'All Posts', posts_path, class:"nav-link" %>
+          <%= link_to '중고거래', posts_path, class:"nav-link" %>
         </li>
 
         <% if user_signed_in? %>
         
           <li class="nav-item">
-            <%= link_to 'My Posts', home_my_posts_path, class:"nav-link" %>
+            <%= link_to '나의 판매내역', home_my_posts_path, class:"nav-link" %>
           </li>        
           <li class="nav-item">
-            <%= link_to 'My Keywords', keywords_path, class:"nav-link" %>
+            <%= link_to '키워드 알림 설정', keywords_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "#{current_user.notifications.where(read: false).count} New Keyword Alerts", notifications_index_path, class:"nav-link" %>
+            <%= link_to "새로운 키워드 알림 #{current_user.notifications.where(read: false).count}개", notifications_index_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Manage Account', edit_user_registration_path, class:"nav-link" %>
+            <%= link_to '프로필 설정', edit_user_registration_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"nav-link" %>
+            <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class:"nav-link" %>
           </li>
 
         <% else %>
 
           <li class="nav-item">
-            <%= link_to 'Sign In', new_user_session_path, class:"nav-link" %>
+            <%= link_to '로그인', new_user_session_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link" %>
+            <%= link_to '가입하기', new_user_registration_path, class:"nav-link" %>
           </li>
 
         <% end %>
