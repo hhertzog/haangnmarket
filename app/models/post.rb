@@ -8,19 +8,10 @@ class Post < ApplicationRecord
 
   after_commit :send_notifications, on: :create
 
-
-  def recipients
-
-  end
-
   def send_notifications
-    #notify users with registered keyword included in post title or body
-    User.all.each do |user|
-      user.keywords.all.each do |keyword|
-        if (self.title.include? keyword.word) || (self.body.include? keyword.word)
-          NotificationSenderJob.perform_later(user, keyword.word, self)
-        end
-      end
+    # only look at users who have 1+ keywords registered
+    User.joins(:keywords).group('users.id').each do |user|
+      NotificationSenderJob.perform_later(user, self)
     end
   end
 
