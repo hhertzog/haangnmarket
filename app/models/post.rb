@@ -18,19 +18,10 @@ class Post < ApplicationRecord
     User.all.each do |user|
       user.keywords.all.each do |keyword|
         if (self.title.include? keyword.word) || (self.body.include? keyword.word)
-          create_notification user, keyword.word, self
+          NotificationSenderJob.perform_later(user, keyword.word, self)
         end
       end
     end
-  end
-
-  def create_notification(recipient, matched_keyword, post)
-	return if post.user_id == recipient.id
-	Notification.create(recipient_id: recipient.id, 
-	                  poster_id: post.user_id, 
-	                  keyword: matched_keyword,
-	                  post: post,
-	                  read: false)
   end
 
 end
