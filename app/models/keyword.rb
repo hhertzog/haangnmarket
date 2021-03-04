@@ -4,5 +4,5 @@ class Keyword < ApplicationRecord
   validates :word, presence: true
 
   # get all IDs of users with keywords registered
-  scope :users_with_keywords, -> { distinct.pluck(:user_id) }
+  scope :user_ids_with_keywords, -> { distinct.pluck(:user_id) }
 end

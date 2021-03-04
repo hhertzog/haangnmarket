@@ -8,10 +8,11 @@ class Post < ApplicationRecord
 
   after_commit :send_notifications, on: :create
 
+  # TODO: put this in a background job
   def send_notifications
     # only look at users who have 1+ keywords registered
-    User.joins(:keywords).group('users.id').each do |user|
-      NotificationSenderJob.perform_later(user, self)
+    Keyword.user_ids_with_keywords.each do |user_id|
+      NotificationSenderJob.perform_later(User.find(user_id), self)
     end
   end
 
