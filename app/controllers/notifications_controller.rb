@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
 	before_action :authenticate_user!
 	
   def index
-   	@notifications = current_user.notifications.all.order("created_at DESC")
+   	@notifications = current_user.notifications.order("created_at DESC").page(params[:page])
 
    	# Mark all notifications on page as 'read' when user opens notification index
    	@notifications.each do |notification|
