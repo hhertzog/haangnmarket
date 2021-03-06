@@ -22,10 +22,11 @@ class KeywordsController < ApplicationController
 
   # POST /keywords or /keywords.json
   def create
-    @keyword = Keyword.new(keyword_params)
+    @keyword = Keyword.find_or_create_by(keyword_params)
 
     respond_to do |format|
       if @keyword.save
+        current_user.keywords << @keyword
         format.html { redirect_to keywords_url, notice: "키워드 등록되었습니다." }
         format.json { render :show, status: :created, location: @keyword }
       else
@@ -50,7 +51,7 @@ class KeywordsController < ApplicationController
 
   # DELETE /keywords/1 or /keywords/1.json
   def destroy
-    @keyword.destroy
+    current_user.keywords.destroy(@keyword)
     respond_to do |format|
       format.html { redirect_to keywords_url, notice: "성공적으로 삭제되었습니다." }
       format.json { head :no_content }
@@ -58,8 +59,7 @@ class KeywordsController < ApplicationController
   end
 
   def delete_all_user_keywords
-    @keywords = current_user.keywords
-    @keywords.destroy_all
+    current_user.keywords.destroy_all
     respond_to do |format|
       format.html { redirect_to keywords_url, notice: "성공적으로 삭제되었습니다." }
       format.json { head :no_content }
@@ -74,6 +74,6 @@ class KeywordsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def keyword_params
-      params.require(:keyword).permit(:word, :user_id)
+      params.require(:keyword).permit(:word)
     end
 end

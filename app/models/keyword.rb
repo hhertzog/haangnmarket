@@ -1,8 +1,6 @@
 class Keyword < ApplicationRecord
-  belongs_to :user
+  has_many :subscriptions
+  has_many :users, through: :subscriptions
 
-  validates :word, presence: true
-
-  # get all IDs of users with keywords registered
-  scope :user_ids_with_keywords, -> { distinct.pluck(:user_id) }
+  validates :word, presence: true, uniqueness: true
 end

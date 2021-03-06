@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_051106) do
+ActiveRecord::Schema.define(version: 2021_03_06_102005) do
 
   create_table "keywords", force: :cascade do |t|
     t.string "word"
-    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_keywords_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -43,6 +41,15 @@ ActiveRecord::Schema.define(version: 2021_02_23_051106) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "keyword_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["keyword_id"], name: "index_subscriptions_on_keyword_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -55,7 +62,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_051106) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "keywords", "users"
   add_foreign_key "notifications", "posts"
   add_foreign_key "posts", "users"
+  add_foreign_key "subscriptions", "keywords"
+  add_foreign_key "subscriptions", "users"
 end
