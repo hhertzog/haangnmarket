@@ -7,13 +7,13 @@ class NotificationSenderJob < ApplicationJob
   		return
   	end
 
-  	user.keywords.all.each do |keyword|
+  	user.keywords.find_each do |keyword|
   		if (post.title.include? keyword.word) || (post.body.include? keyword.word)
-			Notification.create(recipient_id: user.id, 
-			                  poster_id: post.user_id, 
-			                  keyword: keyword.word,
-			                  post: post,
-			                  read: false)
+  			Notification.create(recipient_id: user.id, 
+  			                  poster_id: post.user_id, 
+  			                  keyword: keyword.word,
+  			                  post: post,
+  			                  read: false)
 
 			# return to avoid sending multiple notifications of same post
 			# if multiple keywords match it

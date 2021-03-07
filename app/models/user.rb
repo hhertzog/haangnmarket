@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         has_many :subscriptions, dependent: :destroy
-         has_many :keywords, through: :subscriptions
-         has_many :posts, dependent: :destroy
-         has_many :notifications, dependent: :destroy, foreign_key: :recipient_id
+  has_many :subscriptions, dependent: :destroy
+  has_many :keywords, through: :subscriptions
+  has_many :posts, dependent: :destroy
+  has_many :notifications, dependent: :destroy, foreign_key: :recipient_id
 end
