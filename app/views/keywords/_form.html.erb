@@ -1,28 +1,36 @@
-<%= form_with(model: keyword) do |form| %>
-  <% if keyword.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(keyword.errors.count, "error") %> 에러 때문에 키워드 저장 실패했습니다:</h2>
+<% if current_user.keywords.size < Rails.configuration.max_keywords_per_user %>
 
-      <ul>
-        <% keyword.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: keyword) do |form| %>
+    <% if keyword.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(keyword.errors.count, "error") %> 에러 때문에 키워드 저장 실패했습니다:</h2>
+
+        <ul>
+          <% keyword.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="form-group col-lg-2">
+        <%= form.text_field :word, class:"form-control", placeholder:"키워드를 입력해주세요." %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.number_field :user_id, id: :keyword_user_id, class:"form-control", value:current_user.id, type: :hidden %>
+    </div>
+    <br/>
+
+    <div class="actions">
+      <%= form.submit class:"btn btn-outline-success", value:"등록" %>
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="form-group col-lg-2">
-      <%= form.text_field :word, class:"form-control", placeholder:"키워드를 입력해주세요." %>
-    </div>
-  </div>
+<% else %>
 
-  <div class="field">
-    <%= form.number_field :user_id, id: :keyword_user_id, class:"form-control", value:current_user.id, type: :hidden %>
-  </div>
-  <br/>
+  <p>키워드는 <%= Rails.configuration.max_keywords_per_user %>개까지만 지정하실 수 있어요ㅠ 다른 키워드를 삭제해주세요!</p>
 
-  <div class="actions">
-    <%= form.submit class:"btn btn-outline-success", value:"등록" %>
-  </div>
 <% end %>

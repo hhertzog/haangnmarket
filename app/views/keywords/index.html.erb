@@ -1,6 +1,11 @@
 <h2>키워드 알림 설정</h2>
 
-<%= link_to '새 키워드 등록', new_keyword_path, class:"btn btn-outline-success" %>
+<br/>
+<h5>알림 받을 키워드 <%= current_user.keywords.size %> / <%= Rails.configuration.max_keywords_per_user %></h5>
+
+<% if current_user.keywords.size < Rails.configuration.max_keywords_per_user %>
+	<%= link_to '새 키워드 등록', new_keyword_path, class:"btn btn-outline-success" %>
+<% end %>
 <%= link_to '키워드 전체 삭제', keywords_index_path, method: :delete, data: { confirm: '정말로 모든 키워드를 삭제하고 싶으세요?' }, class:"btn btn-outline-danger" %>
 <br/><br/>
 
